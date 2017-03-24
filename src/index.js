@@ -308,6 +308,7 @@ function graphqlHTTP(options: Options): Middleware {
       }
       // Format any encountered errors.
       if (result && result.errors) {
+        response.statusCode = 400;
         (result: any).errors = result.errors.map(formatErrorFn || formatError);
       }
       // If allowed to show GraphiQL, present it instead of JSON.
